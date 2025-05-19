@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot name="strawberry_plant">
+  <!-- 基座 -->
+
+  <!-- 主茎链接 -->
+  <link name="branch">
+    <visual>
+      <origin xyz="0.03075 -0.522 -0.3289"/> <!-- 根据缩放调整位置 -->
+      <geometry>
+        <mesh filename="first_straw_branch.stl" scale="0.05 0.05 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.03075 -0.522 -0.3289"/> <!-- 根据缩放调整位置 -->
+      <geometry>
+        <mesh filename="first_straw_branch.stl" scale="0.05 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- 分枝1 -->
+  <link name="fruit">
+    <visual>
+      <material name="green">
+      <color rgba="0.3 0.7 0 1"/>
+      </material>
+      <origin xyz="0.03075 -0.522 -0.3289"/> <!-- 根据缩放调整位置 -->
+      <geometry>
+        <mesh filename="first_straw_fruit.stl" scale="0.05 0.05 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.03075 -0.522 -0.3289"/> <!-- 根据缩放调整位置 -->
+      <geometry>
+        <mesh filename="first_straw_fruit.stl" scale="0.05 0.05 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.05" ixy="0.0" ixz="0.0" iyy="0.05" iyz="0.0" izz="0.05"/>
+    </inertial>
+  </link>
+
+
+  <!-- 关节连接主茎和分枝1 -->
+  <joint name="joint_branch1" type="fixed">
+    <parent link="fruit"/>
+    <child link="branch"/>
+    <origin xyz="0 0 0"/> <!-- 根据缩放调整位置 -->
+  </joint>
+
+  <!-- 可以继续添加更多分枝和关节 -->
+  
+</robot>
